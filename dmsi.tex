@@ -1,0 +1,162 @@
+\documentclass[12pt,a4paper,twoside]{report}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{tocbibind} %para incluir a Lista de Figuras, Lista de Tabelas no Índice
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{float}
+\floatstyle{plain}
+\newfloat{Code Excerpt}{}{program}[chapter]
+\newfloat{Program}{}{program}[chapter]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\R}{{\mbox{I$\!$R}}}
+\usepackage{style/relatorio} % formato "oficial"
+\usepackage{graphicx}
+\graphicspath{{./images/}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{fancyvrb} %para poder utilizar função especial do Verbatim
+\usepackage{pdfpages} %para poder incluir pdf's externos
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{verbatim} % incluir listagens
+\usepackage{listings} % incluir listagens
+\usepackage{url} % typeset URL's
+\usepackage{textcomp}
+\usepackage{multirow}
+\usepackage{epstopdf}
+\usepackage{chngcntr} % para permitir que o footnote tenha numeraçao incrementada (ver: \counterwithout)
+%\usepackage{fancyhdr}
+%\usepackage{hhline}
+\usepackage[pdftex,colorlinks=true,
+                    urlcolor=black, %blue
+                    linkcolor=black,
+                    citecolor=black, %cor das citações
+                    bookmarks=true,
+                    pdfstartview=FitH]{hyperref}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{amssymb}
+\newcommand{\sign}{\operatorname{sgn}}
+%\newcommand{\sign}{\mathop{\mathrm{sgn}}}
+\usepackage[english,ruled]{algorithm2e}
+\parskip=0.25cm
+\usepackage{boxedminipage}
+\usepackage{epigraph}
+\usepackage{lipsum}
+\usepackage{style/slashbox} %% poder usar barras diagonais nas tabelas
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setstretch{1.5}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength\epigraphwidth{10cm}
+\setlength\epigraphrule{0pt}
+
+\begin{document}
+ %\cleardoublepage
+%\dept{Engenharia Informática - 3º Ano}
+%\course{Engenharia Informática}
+\counterwithout*{footnote}{chapter} %garante que a numeração do footnote incrementa (comentar isto se quiser que a numeração vá a 1 em cada novo capitulo)
+\title{Titulo da Documento}
+\author{Autor do documento}
+\authnum{}
+\secondauthor{\mbox{}}
+\secauthnum{\mbox{}}
+\supervisor{Nome do supervisor}
+%\cosupervisor{\mbox{Nome do co-supervisor}}
+%\firstreader{\mbox{}}
+
+% Coloca a capa, primeira pagina e outros
+\beforepreface
+%cria uma página em branco
+%\newpage
+%\mbox{}
+
+\hfill Aos .....,
+
+
+\newpage
+\mbox{}
+
+\hfill citaçao famosa
+
+\prefacesection{Resumo}
+\input{chapters/resumo}
+
+\newpage
+\mbox{}
+
+
+\prefacesection{Abstract}
+\input{chapters/abstract}
+
+
+\newpage
+\mbox{}
+
+\prefacesection{Agradecimentos}
+\input{chapters/agradecimento}
+
+% Coloca indices
+\afterpreface
+
+%\newpage
+%\mbox{}
+
+\prefacesection{Lista de Abreviaturas}
+\begin{description}
+ \item [AMD] Advanced Micro Devices
+ \item [API] Application Programming Interfaces
+ \item [APP] Accelerated Parallel Processing
+ \item [APU] Accelerated Processing Unit
+ \item [ASIC] Application-Specific Integrated Circuit
+ \item [ATLAS] Automatically Tuned Linear Algebra Software
+ \item [BLAS] Basic Linear Algebra Subprograms
+ \item [BSD] Berkeley sockets
+ \item [CU] Compute Unit
+ \item [C99] C Programming Language Standard
+ \item [CPU] Central Processing Unit
+ \item [CUDA] Compute Unified Device Architecture
+ \item [DSP] Digital Signal Processor
+ \item [FPGA] Field-Programmable Gate Array
+ \item [GPP] General Purpose Processors
+ \item [GPU] Graphics Processing Unit
+ \item [GPGPU] General-Purpose Graphics Processing Units
+ \item [GVirtuS] Generic Virtualization Service
+ \item [HPC] High-Performance Computing
+ \item [IO] Input Output
+ \item [ISA] Instruction Set Architecture
+ \item [ISO] International Organization for Standardization
+ \item [JIT] Just-In-Time
+ \item [MPI] Message Passing Interface
+ \item [OS] Operative System
+ \item [OpenCL] Open Computing Language
+ \item [OpenMP] Open Multi-Processing
+ \item [PE] Processing Element
+ \item [PVM] Parallel Virtual Machine
+ \item [RAM] Random Access Memory
+ \item [SDK] Software Development Kit
+ \item [SMP] Symetric MultiProcessing
+ \item [SIMD] Single Instruction, Multiple Data
+ \item [SPMD] Single Program, Multiple Data
+ \item [SSH] Secure-Shell
+ \item [VCL] Virtual OpenCL
+\end{description}
+
+\bodystart
+
+% Capitulos do documento
+\input{chapters/cap01}
+%\input{chapters/cap02}
+%\input{chapters/cap03}
+%\input{chapters/cap04}
+\input{chapters/conclusoes}
+
+% estilo de referências. outros valores posíveis são 'plain' e 'abbrv' apalike
+\bibliographystyle{plain}
+% listagem de referências
+\bibliography{lib/refs}
+
+
+% Apêndice
+\appendix
+\input{chapters/apendice}
+
+\end{document}
